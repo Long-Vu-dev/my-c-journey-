@@ -1,15 +1,25 @@
 # include "raylib.h"
 
 int main(){
+    // tạo mảng
+    float arr[5] ;
+    for(int i = 0 ; i < 5 ; i++){
+        arr[i] = 100 + i *100;
+    }
     InitWindow(1200, 900, "My First Raylib Game");
-    int y = 225 ;
+    
     while (!WindowShouldClose()){
+        float dt = GetFrameTime();
+        // di chuyển các hình tròn
+        for(int i = 0 ; i < 5 ; i++){
+            arr[i] += 100 * dt;
+        }
         BeginDrawing();
-        ClearBackground(RAYWHITE);
-        for (int i = 0 ; i < 10 ; i++){
-            float x = 100 + i * 80;
-            DrawCircle(x, y, 30, BLUE);
+        ClearBackground(BLACK);
+        for (int i = 0 ; i < 5 ; i++){
             
+            // float y = 50 + i * 80;
+            DrawCircle(arr[i], 255, 40, BLUE);
         }
         EndDrawing();
     }
